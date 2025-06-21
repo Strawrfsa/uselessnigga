@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$UNIGGA - The Useless Successor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- ZÁKLADNÉ NASTAVENIA --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: #e0e0e0;
+            font-family: 'Orbitron', sans-serif;
+            overflow-x: hidden;
+            /* KURZOR BUDE TERAZ VIDITEĽNÝ, ODSTRÁNILI SME "cursor: none;" */
+        }
+
+        /* --- VIDEO POZADIE --- */
+        #bgVideo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -100;
+            object-fit: cover;
+            opacity: 0.25;
+        }
+
+        /* --- EFEKT KURZORA --- */
+        .cursor-trail {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background-image: url('logo.png');
+            background-size: contain;
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        /* --- TLAČIDLO ZVUKU --- */
+        #sound-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            font-family: 'Orbitron', sans-serif;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid white;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        /* --- HERO SEKCIA --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 8rem; /* Ešte väčší nadpis */
+            font-weight: 900;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 105, 180, 0.9);
+            color: #fff;
+        }
+        
+        /* --- VEĽKÉ LOGO S GLITCH EFEKTOM --- */
+        #main-logo-container {
+            position: relative;
+            margin-top: -50px;
+        }
+
+        #main-logo {
+            width: 250px;
+            height: auto;
+            transition: transform 0.2s ease;
+        }
+
+        #main-logo-container:hover #main-logo {
+            animation: glitch 0.4s infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-5px, 5px); }
+            40% { transform: translate(-5px, -5px); }
+            60% { transform: translate(5px, 5px); }
+            80% { transform: translate(5px, -5px); }
+            100% { transform: translate(0); }
+        }
+
+        /* --- OBSAH POD HERO SEKCIOU --- */
+        .content-section {
+            padding: 100px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .content-section h2 {
+            font-size: 3.5rem;
+            margin-bottom: 40px;
+            color: #ff69b4;
+            text-transform: uppercase;
+        }
+        
+        .content-section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ccc;
+        }
+        
+        .hidden {
+            opacity: 0;
+            filter: blur(5px);
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .visible {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+        
+        /* ŠTÝLY PRE KONTAKTNÉ LINKY */
+        .contact-links a {
+            display: inline-block;
+            background-color: #ff69b4;
+            color: #000;
+            padding: 15px 30px;
+            margin: 10px 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        .contact-links a:hover {
+            transform: scale(1.05);
+        }
+
+    </style>
+</head>
+<body>
+
+    <video autoplay muted loop id="bgVideo">
+        <source src="gay.mp4" type="video/mp4">
+    </video>
+
+    <button id="sound-btn">Unmute</button>
+
+    <header class="hero">
+        <h1>$UNIGGA</h1>
+        
+        <div id="main-logo-container">
+            <img src="logo.png" id="main-logo" alt="Logo">
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="content-section">
+            <div class="hidden">
+                <h2>ABOUT US</h2>
+                <p>We are the proud successors to the legendary Useless Coin. We offer absolutely nothing. Zero utility, zero promises, zero brain cells required. Just pure, unadulterated degen energy. Seriously, don't buy this.</p>
+            </div>
+        </section>
+
+        <section id="tokenomics" class="content-section">
+            <div class="hidden">
+                <h2>TOKENOMICS</h2>
+                <p>Look, there are tokens. A lot of them. We could tell you about taxes and liquidity, but you're not gonna read it anyway. Every transaction just fuels the chaos. This is probably going to zero. Not financial advice.</p>
+            </div>
+        </section>
+        
+        <section id="contact" class="content-section">
+            <div class="hidden">
+                <h2>FIND US</h2>
+                <p>If you still want to be part of this mess, here are the links. Don't say we didn't warn you.</p>
+                <div class="contact-links">
+                    <a href="https://x.com/tradingboss007" target="_blank">DEV'S X (TWITTER)</a>
+                    <a href="https://x.com/i/communities/1936449727588921846" target="_blank">COMMUNITY X</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // --- EFEKT KURZORA (bez zmien, stále funkčný) ---
+        const trailCount = 50;
+        const trailElements = [];
+        let currentTrailIndex = 0;
+
+        for (let i = 0; i < trailCount; i++) {
+            const el = document.createElement('div');
+            el.classList.add('cursor-trail');
+            document.body.appendChild(el);
+            trailElements.push(el);
+        }
+
+        let lastMoveTime = 0;
+        const moveInterval = 15;
+
+        window.addEventListener('mousemove', (e) => {
+            const currentTime = Date.now();
+            if (currentTime - lastMoveTime < moveInterval) {
+                return;
+            }
+            lastMoveTime = currentTime;
+
+            const trailEl = trailElements[currentTrailIndex];
+            
+            trailEl.style.left = e.clientX + 'px';
+            trailEl.style.top = e.clientY + 'px';
+            trailEl.style.opacity = '1';
+            
+            setTimeout(() => {
+                trailEl.style.opacity = '0';
+            }, 500);
+
+            currentTrailIndex = (currentTrailIndex + 1) % trailCount;
+        });
+
+        // --- SKRIPT PRE TLAČIDLO ZVUKU (bez zmien) ---
+        const video = document.getElementById('bgVideo');
+        const soundButton = document.getElementById('sound-btn');
+
+        soundButton.addEventListener('click', function() {
+            if (video.muted) {
+                video.muted = false;
+                soundButton.textContent = 'Mute';
+            } else {
+                video.muted = true;
+                soundButton.textContent = 'Unmute';
+            }
+        });
+
+        // --- SKRIPT PRE ZJAVENIE OBSAHU (bez zmien) ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+    </script>
+
+</body>
+</html>
